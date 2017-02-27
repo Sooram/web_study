@@ -5,6 +5,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var expressValidator = require('express-validator');
 
 // import modules that contain code for handling particular sets of 
 // related "routes"(URL paths) from the routes directory
@@ -32,6 +33,7 @@ app.set('view engine', 'pug');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(expressValidator() ); // Add this after the bodyParser middlewares!
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
